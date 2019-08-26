@@ -21,20 +21,20 @@ mira
     ## Not easy in Galaxy to add sanger to --job, so use load_sequence_data(lsd) instead
     ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
     -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condSanger.filename}
-    ${condSanger.sanger_extra}
+    "${condSanger.sanger_extra}"
 #end if
 #if $condRoche.use == "true":
     454_SETTINGS
     ## Not easy in Galaxy to add 454 to --job, so use load_sequence_data(lsd) instead
     ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
     -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condRoche.filename}
-    ${condRoche.roche_extra}
+    "${condRoche.roche_extra}"
 #end if
 #if $condIllumina.use == "true":
     SOLEXA_SETTINGS
     ## Not easy in Galaxy to add solexa to --job, so use load_sequence_data(lsd) instead
     -LR:lsd=1:ft=fastq -FN:fqi=${condIllumina.filename}
-    ${condIllumina.solexa_extra}
+    "${condIllumina.solexa_extra}"
     ##TODO - Look at -LR FASTQ qual offset (fqqo)
 #end if
 #if $condIonTorrent.use == "true":
@@ -42,11 +42,11 @@ mira
     ## Not easy in Galaxy to add iontor to --job, so use load_sequence_data(lsd) instead
     ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
     -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condIonTorrent.filename}
-    ${condIonTorrent.torrent_extra}
+    "${condIonTorrent.torrent_extra}"
 #end if
 
 COMMON_SETTINGS
-$common_extra
+"$common_extra"
 
 ##ignore warnings about long read names
 -MI:somrnl=0
