@@ -187,10 +187,10 @@ $common_extra
                 </valid>
             </sanitizer>
         </param>
-	    <param name="output_fsa" type="boolean" truevalue="1" falsevalue="0" checked="yes" label="Output FASTA" />
-	    <param name="output_caf" type="boolean" truevalue="1" falsevalue="0" checked="0" label="Output CAF" />
-	    <param name="output_ace" type="boolean" truevalue="1" falsevalue="0" checked="0" label="Output ACE" />
-	    <param name="output_wig" type="boolean" truevalue="1" falsevalue="0" checked="0" label="Output WIG" />
+        <param name="output_fsa" type="boolean" truevalue="1" falsevalue="0" checked="yes" label="Output FASTA" />
+        <param name="output_caf" type="boolean" truevalue="1" falsevalue="0" checked="0" label="Output CAF" />
+        <param name="output_ace" type="boolean" truevalue="1" falsevalue="0" checked="0" label="Output ACE" />
+        <param name="output_wig" type="boolean" truevalue="1" falsevalue="0" checked="0" label="Output WIG" />
     </inputs>
     <outputs>
         <data name="out_log" format="txt" label="MIRA log" from_work_dir="mira_assembly/mira_d_info/mira_info_assembly.txt" />
