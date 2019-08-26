@@ -1,4 +1,4 @@
-<tool id="mira_assembler" name="Assemble with MIRA v3.4" version="0.0.12">
+<tool id="mira_assembler" name="Assemble with MIRA v3.4" version="0.0.13">
     <description>Takes Sanger, Roche, Illumina, and Ion Torrent data</description>
     <requirements>
         <requirement type="package" version="3.4.1.1">mira</requirement>
