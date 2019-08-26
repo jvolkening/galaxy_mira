@@ -143,7 +143,7 @@ $common_extra
             <when value="false" />
             <when value="true">
                 <param name="filename" type="data" format="fastq" label="Solexa/Illumina reads file" help="FASTQ format" />
-                <param name="solexa_extra" type="text" size="100" value="-DP:ure=yes -AS:mrpc=100 -AL:mo=16" label="Extra Illumina parameters for MIRA">
+                <param name="solexa_extra" type="text" size="100" value="" label="Extra Illumina parameters for MIRA">
                     <sanitizer invalid_char="">
                         <valid initial=",string.letters,string.digits">
                             <add value=" " />
