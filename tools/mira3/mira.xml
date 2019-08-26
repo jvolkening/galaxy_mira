@@ -8,61 +8,61 @@
     </version_command>
     <command detect_errors="aggressive">
     <![CDATA[
-    mira
-    --project=mira
-    --job=$job_method,$job_type,$job_quality
-    -GE:not="\${GALAXY_SLOTS:-1}"
-    #if $condBackbone.use == "true":
-        ## Can this be linked to job_method as well? If mapping we need the backbone...
-        -SB:lb=1:bft=fasta -FN:bbin=${condBackbone.filename}
-    #end if
-    #if $condSanger.use == "true":
-        SANGER_SETTINGS
-        ## Not easy in Galaxy to add sanger to --job, so use load_sequence_data(lsd) instead
-        ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
-        -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condSanger.filename}
-        ${condSanger.sanger_extra}
-    #end if
-    #if $condRoche.use == "true":
-        454_SETTINGS
-        ## Not easy in Galaxy to add 454 to --job, so use load_sequence_data(lsd) instead
-        ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
-        -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condRoche.filename}
-        ${condRoche.roche_extra}
-    #end if
-    #if $condIllumina.use == "true":
-        SOLEXA_SETTINGS
-        ## Not easy in Galaxy to add solexa to --job, so use load_sequence_data(lsd) instead
-        -LR:lsd=1:ft=fastq -FN:fqi=${condIllumina.filename}
-        ${condIllumina.solexa_extra}
-        ##TODO - Look at -LR FASTQ qual offset (fqqo)
-    #end if
-    #if $condIonTorrent.use == "true":
-        IONTOR_SETTINGS
-        ## Not easy in Galaxy to add iontor to --job, so use load_sequence_data(lsd) instead
-        ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
-        -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condIonTorrent.filename}
-        ${condIonTorrent.torrent_extra}
-    #end if
+mira
+--project=mira
+--job=$job_method,$job_type,$job_quality
+-GE:not="\${GALAXY_SLOTS:-1}"
+#if $condBackbone.use == "true":
+    ## Can this be linked to job_method as well? If mapping we need the backbone...
+    -SB:lb=1:bft=fasta -FN:bbin=${condBackbone.filename}
+#end if
+#if $condSanger.use == "true":
+    SANGER_SETTINGS
+    ## Not easy in Galaxy to add sanger to --job, so use load_sequence_data(lsd) instead
+    ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
+    -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condSanger.filename}
+    ${condSanger.sanger_extra}
+#end if
+#if $condRoche.use == "true":
+    454_SETTINGS
+    ## Not easy in Galaxy to add 454 to --job, so use load_sequence_data(lsd) instead
+    ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
+    -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condRoche.filename}
+    ${condRoche.roche_extra}
+#end if
+#if $condIllumina.use == "true":
+    SOLEXA_SETTINGS
+    ## Not easy in Galaxy to add solexa to --job, so use load_sequence_data(lsd) instead
+    -LR:lsd=1:ft=fastq -FN:fqi=${condIllumina.filename}
+    ${condIllumina.solexa_extra}
+    ##TODO - Look at -LR FASTQ qual offset (fqqo)
+#end if
+#if $condIonTorrent.use == "true":
+    IONTOR_SETTINGS
+    ## Not easy in Galaxy to add iontor to --job, so use load_sequence_data(lsd) instead
+    ## I expect hard trimmed FASTQ files with no NCBI traceinfo XML file
+    -LR:lsd=1:mxti=0:ft=fastq -FN:fqi=${condIonTorrent.filename}
+    ${condIonTorrent.torrent_extra}
+#end if
 
-    COMMON_SETTINGS
-    $common_extra
+COMMON_SETTINGS
+$common_extra
 
-    ##ignore warnings about long read names
-    -MI:somrnl=0
+##ignore warnings about long read names
+-MI:somrnl=0
 
-    ##Explicitly request the FASTA (+QUAL), CAF, ACE, WIG output
-    ##Explicitly disable formats we won't use like MAF (reduce IO)
-    -OUT:orf=$output_fsa:orc=$output_caf:ora=$output_ace:orw=$output_wig:orm=0:org=0:ors=0
+##Explicitly request the FASTA (+QUAL), CAF, ACE, WIG output
+##Explicitly disable formats we won't use like MAF (reduce IO)
+-OUT:orf=$output_fsa:orc=$output_caf:ora=$output_ace:orw=$output_wig:orm=0:org=0:ors=0
 
-    ##remove_rollover_tmps, remove_tmp_directory
-    -OUT:rrot=1:rtd=1
+##remove_rollover_tmps, remove_tmp_directory
+-OUT:rrot=1:rtd=1
 
-    ##put mira temp directory on local storage
-    ##NO, must run from NFS or problems with multiple jobs/same name can arise
-    ##when using job scheduler
-    ##-DI:trt=/tmp
-    -MI:sonfs=no
+##put mira temp directory on local storage
+##NO, must run from NFS or problems with multiple jobs/same name can arise
+##when using job scheduler
+##-DI:trt=/tmp
+-MI:sonfs=no
     ]]>
     </command>
     <inputs>
